@@ -37,12 +37,13 @@ void AHTTPActorTest::Test()
 	Request->SetURL("https://jsonplaceholder.typicode.com/posts/1");
 	Request->SetVerb("GET");
 	Request->ProcessRequest();
+	BPEvent();
+
 }
 
 void AHTTPActorTest::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bConnectedSuccessfully)
 {
 	UE_LOG(LogTemp, Display, TEXT("Response %s"), *Response->GetContentAsString());
-	BPEvent();
 	
 }
 
