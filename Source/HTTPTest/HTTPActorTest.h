@@ -28,7 +28,7 @@ public:
 	void Test();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void BPEvent();
+	void BPEvent(const FString &text, bool success);
 
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bConnectedSuccessfully);
 
