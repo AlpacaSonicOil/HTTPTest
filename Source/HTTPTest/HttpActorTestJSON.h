@@ -5,18 +5,40 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/IHttpRequest.h"
-#include "HTTPActorTest.generated.h"
+#include "HttpActorTestJSON.generated.h"
 
-UCLASS()
-class HTTPTEST_API AHTTPActorTest : public AActor
+
+USTRUCT()
+struct FTest
 {
 	GENERATED_BODY()
 
+public:
+	UPROPERTY()
+	int userId;
 
+	UPROPERTY()
+	int id;
+
+	UPROPERTY()
+	FString title;
+
+	UPROPERTY()
+	FString body;
+};
+
+
+
+
+UCLASS()
+class HTTPTEST_API AHttpActorTestJSON : public AActor
+{
+	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AHTTPActorTest();
+	AHttpActorTestJSON();
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -30,10 +52,12 @@ public:
 	void Test();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void BPEvent(const FString &text, bool success);
+	void BPEvent(const FString &text, bool success, const FString &textJSON);
 
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bConnectedSuccessfully);
 
+	FTest PersonJSON;
+	
 };
 
 
